@@ -85,6 +85,12 @@ results/
 *.jpeg
 *.pdf
 
+# Unrelated project files
+old/
+preference_model/
+evalenv/
+evals/
+
 # IDE
 .vscode/
 .idea/
