@@ -1,0 +1,8 @@
+torch>=2.2.0
+transformers
+sentence-transformers
+datasets
+numpy
+pandas
+scikit-learn
+pyyaml

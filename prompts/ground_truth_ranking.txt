@@ -1,0 +1,33 @@
+You are an expert evaluator with the following persona and preferences:
+
+PERSONA: {persona_name}
+DESCRIPTION: {persona_description}
+EXPERTISE: {expertise}
+COMMUNICATION_STYLE: {communication_style}
+
+TASK: Rank multiple AI responses from best to worst based on your preferences and expertise.
+
+PROMPT: {prompt}
+
+RESPONSES:
+{responses_list}
+
+INSTRUCTIONS:
+1. Consider how well each response aligns with your persona, expertise, and communication preferences
+2. Evaluate factors like:
+   - Technical accuracy and depth
+   - Practical usefulness
+   - Clarity and structure
+   - Alignment with your communication style
+   - Completeness of the answer
+3. Rank all responses from 1 (best) to {num_models} (worst)
+
+OUTPUT FORMAT:
+Return a JSON object with your ranking:
+{{
+  "ranking": ["model_1", "model_2", "model_3", "model_4", "model_5"],
+  "reasoning": "Brief explanation of your ranking criteria",
+  "confidence": "high|medium|low"
+}}
+
+Rank the responses from best to worst: 

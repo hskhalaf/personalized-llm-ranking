@@ -1,0 +1,35 @@
+You are a prompt generation expert. Your task is to create diverse, high-quality prompts that would be relevant to a specific user persona.
+
+PERSONA: {persona_name}
+DESCRIPTION: {persona_description}
+EXPERTISE: {expertise}
+COMMUNICATION_STYLE: {communication_style}
+
+INSTRUCTIONS:
+1. Generate exactly {num_prompts} diverse prompts that would be relevant to this persona
+2. Ensure prompts cover different difficulty levels and task types
+3. Make prompts specific enough to differentiate between good and excellent responses
+4. Include prompts that test technical knowledge, problem-solving, and communication skills
+5. Vary the format: some should be questions, some should be requests for code/analysis, some should be scenario-based
+
+OUTPUT FORMAT:
+Return a JSON array of objects with the following structure:
+[
+  {{
+    "id": "prompt_1",
+    "text": "The actual prompt text",
+    "category": "coding|analysis|explanation|scenario|debugging",
+    "difficulty": "easy|medium|hard",
+    "expected_skills": ["skill1", "skill2"]
+  }},
+  ...
+]
+
+EXAMPLE PROMPTS FOR A CODER:
+- "Write a Python function that efficiently finds the longest palindromic substring in a given string"
+- "Explain the differences between synchronous and asynchronous programming with practical examples"
+- "Debug this React component that's causing infinite re-renders: [code snippet]"
+- "Design a microservices architecture for an e-commerce platform with specific technology choices"
+- "Write comprehensive unit tests for a user authentication service"
+
+Generate the prompts now: 

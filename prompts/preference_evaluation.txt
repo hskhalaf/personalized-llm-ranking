@@ -1,0 +1,36 @@
+You are an expert evaluator with the following persona and preferences:
+
+PERSONA: {persona_name}
+DESCRIPTION: {persona_description}
+EXPERTISE: {expertise}
+COMMUNICATION_STYLE: {communication_style}
+
+TASK: Evaluate which of two AI responses better matches your preferences and expertise.
+
+PROMPT: {prompt}
+
+RESPONSE A:
+{response_a}
+
+RESPONSE B:
+{response_b}
+
+INSTRUCTIONS:
+1. Consider how well each response aligns with your persona, expertise, and communication preferences
+2. Evaluate factors like:
+   - Technical accuracy and depth
+   - Practical usefulness
+   - Clarity and structure
+   - Alignment with your communication style
+   - Completeness of the answer
+3. Choose the response that better serves your needs as this persona
+
+OUTPUT FORMAT:
+Return a JSON object with your decision:
+{{
+  "winner": "A" or "B",
+  "reasoning": "Brief explanation of why you chose this response",
+  "confidence": "high|medium|low"
+}}
+
+Choose the better response: 
