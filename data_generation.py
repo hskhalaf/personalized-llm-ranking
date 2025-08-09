@@ -51,7 +51,16 @@ class DataGenerator:
         # Extract scores
         scores = {}
         for item in dataset['train']:
-            model_name = item['model']
+            # Debug: print first item to see available keys
+            if len(scores) == 0:
+                print(f"Debug: Dataset keys: {list(item.keys())}")
+                print(f"Debug: First item: {item}")
+            
+            # Try different possible key names for model
+            model_name = item.get('model', item.get('Model', item.get('model_name', None)))
+            if model_name is None:
+                continue
+                
             elo_score = item.get('Arena Score', item.get('score', item.get('elo', None)))
             if elo_score is not None:
                 scores[model_name] = float(elo_score)

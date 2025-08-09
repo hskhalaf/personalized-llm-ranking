@@ -13,20 +13,20 @@ DEFAULT_MODELS = {
         'elo': None,  # Will be loaded from dataset
         'ollama_tag': 'llama3.1:8b'
     },
-    'gemma3:4b': {
-        'arena_name': 'Gemma-3-4B-Instruct',
+    'gemma2:9b': {
+        'arena_name': 'Gemma-2-9B-Instruct',
         'elo': None,
-        'ollama_tag': 'gemma3:4b'
+        'ollama_tag': 'gemma2:9b'
     },
-    'qwen3:7b': {
-        'arena_name': 'Qwen3-7B-Instruct',
+    'qwen2:7b': {
+        'arena_name': 'Qwen2-7B-Instruct',
         'elo': None,
-        'ollama_tag': 'qwen3:7b'
+        'ollama_tag': 'qwen2:7b'
     },
-    'phi4:3.8b': {
-        'arena_name': 'Phi-4-3.8B-Instruct',
+    'phi3:3.8b': {
+        'arena_name': 'Phi-3-3.8B-Instruct',
         'elo': None,
-        'ollama_tag': 'phi4:3.8b'
+        'ollama_tag': 'phi3:3.8b'
     },
     'mistral:7b': {
         'arena_name': 'Mistral-7B-Instruct-v0.3',
