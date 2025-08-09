@@ -6,34 +6,60 @@ Contains model mappings, personas, and experiment parameters.
 import os
 from typing import Dict, List, Any
 
-# Model configurations
-DEFAULT_MODELS = {
-    'llama3.1:8b': {
-        'arena_name': 'Llama-3.1-8B-Instruct',
-        'elo': None,  # Will be loaded from dataset
-        'ollama_tag': 'llama3.1:8b'
-    },
-    'gemma2:9b': {
-        'arena_name': 'Gemma-2-9B-Instruct',
-        'elo': None,
-        'ollama_tag': 'gemma2:9b'
-    },
-    'qwen2:7b': {
-        'arena_name': 'Qwen2-7B-Instruct',
-        'elo': None,
-        'ollama_tag': 'qwen2:7b'
-    },
-    'phi3:3.8b': {
-        'arena_name': 'Phi-3-3.8B-Instruct',
-        'elo': None,
-        'ollama_tag': 'phi3:3.8b'
-    },
-    'mistral:7b': {
-        'arena_name': 'Mistral-7B-Instruct-v0.3',
-        'elo': None,
-        'ollama_tag': 'mistral:7b'
+# Model configurations - will be dynamically loaded
+def get_default_models():
+    """Get default models with automatic Arena matching."""
+    try:
+        from model_matcher import ModelMatcher
+        matcher = ModelMatcher()
+        matches = matcher.find_best_matches(min_score=0.4)
+        
+        # Convert to expected format
+        models = {}
+        for ollama_tag, match_info in matches.items():
+            models[ollama_tag] = {
+                'arena_name': match_info['arena_name'],
+                'elo': None,  # Will be loaded from dataset
+                'ollama_tag': match_info['ollama_tag']
+            }
+        
+        if models:
+            print(f"✅ Auto-matched {len(models)} models")
+            return models
+    except Exception as e:
+        print(f"Warning: Auto-matching failed ({e}), using fallback models")
+    
+    # Fallback to manual configuration
+    return {
+        'llama3.1:8b': {
+            'arena_name': 'Meta-Llama-3.1-8B-Instruct',
+            'elo': None,
+            'ollama_tag': 'llama3.1:8b'
+        },
+        'gemma2:9b': {
+            'arena_name': 'Gemma-2-9B-Instruct',
+            'elo': None,
+            'ollama_tag': 'gemma2:9b'
+        },
+        'qwen2:7b': {
+            'arena_name': 'Qwen2.5-7B-Instruct',
+            'elo': None,
+            'ollama_tag': 'qwen2:7b'
+        },
+        'phi3:3.8b': {
+            'arena_name': 'Phi-3-Medium-4K-Instruct',
+            'elo': None,
+            'ollama_tag': 'phi3:3.8b'
+        },
+        'mistral:7b': {
+            'arena_name': 'Mistral-7B-Instruct-v0.3',
+            'elo': None,
+            'ollama_tag': 'mistral:7b'
+        }
     }
-}
+
+# Load models dynamically
+DEFAULT_MODELS = get_default_models()
 
 # Persona definitions
 PERSONAS = {
